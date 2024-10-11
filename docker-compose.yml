@@ -1,0 +1,30 @@
+services:
+  wakatime-exporter:
+    depends_on:
+      - wakatime-database
+    container_name: wakatime-exporter
+    build: .
+    networks:
+      - wakatime
+
+  wakatime-database:
+    container_name: wakatime-database
+    image: mysql:8.0
+    ports:
+      - "3360:3306"
+    hostname: wakatime-database
+    environment:
+      MYSQL_ROOT_PASSWORD: wakatime@db
+      MYSQL_DATABASE: wakatime
+      MYSQL_ROOT_HOST: '%'
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - wakatime
+
+networks:
+  wakatime:
+    driver: bridge
+
+volumes:
+    mysql_data:

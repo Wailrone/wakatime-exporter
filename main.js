@@ -1,4 +1,4 @@
-const mysql = require("mysql");
+const mysql = require("mysql2");
 require('dotenv').config()
 
 async function requestWakatime(url) {
@@ -79,7 +79,7 @@ setInterval(async () => {
             ]);
         })
     }
-}, 600000);
+}, 10000);
 
 process.on('unhandledRejection', console.error);
 process.on('uncaughtException', console.error);
