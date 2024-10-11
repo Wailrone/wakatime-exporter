@@ -79,7 +79,7 @@ setInterval(async () => {
             ]);
         })
     }
-}, 10000);
+}, 600000);
 
 process.on('unhandledRejection', console.error);
 process.on('uncaughtException', console.error);
