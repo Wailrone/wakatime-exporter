@@ -13,7 +13,7 @@ const database = mysql.createConnection({
     host: process.env.DATABASE_HOST,
     port: process.env.DATABASE_PORT,
     user: process.env.DATABASE_USER,
-    password: process.env.DATABASE_PASSWORD,
+    password: process.env.MYSQL_ROOT_PASSWORD,
     database: process.env.DATABASE_NAME
 });
 
@@ -79,7 +79,8 @@ setInterval(async () => {
             ]);
         })
     }
-}, 600000);
+}, 600_000);
+// Run every 10 minutes (600_000ms)
 
 process.on('unhandledRejection', console.error);
 process.on('uncaughtException', console.error);

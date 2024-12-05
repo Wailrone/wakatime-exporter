@@ -13,14 +13,15 @@ services:
     ports:
       - "3360:3306"
     hostname: wakatime-database
+    env_file:
+      - .env
     environment:
-      MYSQL_ROOT_PASSWORD: wakatime@db
       MYSQL_DATABASE: wakatime
-      MYSQL_ROOT_HOST: '%'
     command:
       --sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
     volumes:
       - mysql_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - wakatime
 
