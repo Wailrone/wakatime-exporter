@@ -4,6 +4,8 @@ services:
       - wakatime-database
     container_name: wakatime-exporter
     build: .
+    env_file:
+      - .env
     networks:
       - wakatime
 
